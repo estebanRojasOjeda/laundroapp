@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect('mongo://127.0.0.1/laundroapp', {
+mongoose.connect('mongodb://127.0.0.1/laundroapp', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

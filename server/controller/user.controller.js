@@ -51,3 +51,51 @@ module.exports.login = (req, res) => {
             }
         })
 }
+
+module.exports.findAll = (req, res) => {
+    jwt.verify(req.cookies.usertoken, jwtConfig.secret, (err) => {
+        if (!err) {
+            User.find({})
+                .then(data => res.json(data))
+                .catch(err => res.status(500).json(err))
+        } else {
+            res.status(401).json(err);
+        }
+    })
+}
+
+module.exports.findById = (req, res) => {
+    jwt.verify(req.cookies.usertoken, jwtConfig.secret, (err) => {
+        if (!err) {
+            User.findById(req.params.id)
+                .then(data => res.json(data))
+                .catch(err => res.status(500).json(err))
+        } else {
+            res.status(401).json(err);
+        }
+    })
+}
+
+module.exports.update = (req, res) => {
+    jwt.verify(req.cookies.usertoken, jwtConfig.secret, (err) => {
+        if (!err) {
+            User.findByIdAndUpdate(req.params.id, req.body)
+                .then(data => res.json(data))
+                .catch(err => res.status(500).json(err))
+        } else {
+            res.status(401).json(err);
+        }
+    })
+}
+
+module.exports.delete = (req, res) => {
+    jwt.verify(req.cookies.usertoken, jwtConfig.secret, (err) => {
+        if (!err) {
+            User.findByIdAndDelete(req.params.id)
+                .then(data => res.json(data))
+                .catch(err => res.status(500).json(err))
+        } else {
+            res.status(401).json(err);
+        }
+    })
+}

@@ -18,7 +18,7 @@ module.exports.create = (req, res) => {
 module.exports.findAll = (req, res) => {
     jwt.verify(req.cookies.usertoken, jwtConfig.secret, (err) => {
         if (!err) {
-            Customer.find()
+            Customer.find({})
                 .then(data => res.json(data))
                 .catch(err => res.status(500).json(err))
         } else {

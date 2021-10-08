@@ -28,13 +28,13 @@ const WashCycleSchema = mongoose.Schema({
 WashCycleSchema.virtual('user', {
     ref: 'User',
     localField: 'userId',
-    foreingField: '_id'
+    foreignField: '_id'
 });
 
 WashCycleSchema.virtual('customer', {
     ref: 'Customer',
     localField: 'customerId',
-    foreingField: '_id'
+    foreignField: '_id'
 });
 
 WashCycleSchema.pre('save', function (next) {
