@@ -1,0 +1,29 @@
+.landing{
+    background-color: #4a0072; 
+    margin: 10px;
+    min-height: 700px;
+    width: 98%;
+    border: 3px solid #000000;
+    text-align: center;
+}
+
+.cover-page{
+    min-height: 600px;
+    max-width: 500px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    left: 0px;
+}
+
+.login{
+    text-align: left;
+    background-color: #ffffff !important;
+    min-height: 400px;
+    max-width: 500px;
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+
