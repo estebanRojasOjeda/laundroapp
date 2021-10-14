@@ -25,6 +25,7 @@
         visibility: visible !important;
         color: #FFF !important;
         border-color: #fff !important;
+        z-index: 13 !important;
         
     }
 
@@ -37,7 +38,7 @@
         visibility: visible !important;
         color: #FFF !important;
         border-color: #fff !important;
-        
+        z-index: 13 !important;
     }
 }
 

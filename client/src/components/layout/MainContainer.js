@@ -1,4 +1,3 @@
-import { Container, Row } from 'reactstrap';
 import "./style/main.container.css";
 import Header from "./Header";
 import MenuNav from "./MenuNav";
@@ -6,11 +5,15 @@ import Content from "./Content";
 
 const MainContainer = () => {
     return (
-        <Container className="container">
+        <div className="main-container">
             <Header></Header>
+            <div className="menu">
             <MenuNav></MenuNav>
+            </div>
+            <div className="content">
             <Content></Content>
-        </Container>
+            </div>
+        </div>
     );
 }
 

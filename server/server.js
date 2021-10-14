@@ -3,7 +3,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const db = require('./configuration/db.config');
 const app = express();
-const port = 8001;
+const port = 8000;
 
 app.use(cors({
     credentials: true,

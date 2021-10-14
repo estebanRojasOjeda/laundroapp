@@ -1,11 +1,3 @@
-.nav{
-    min-height: 600px;
-    width: 200px;
-    vertical-align: middle;
-    background-color:  #5d0092;
-    
-}
-
 .list-group-item{
     background-color: #5d0092 !important;
     border-radius: 0 !important;
@@ -47,7 +39,7 @@
 
 @media only screen and (min-width: 1024px){
     .nav{
-        min-height: 600px;
+        min-height: 92vh;
         width: 200px;
         vertical-align: middle;
         background-color:  #5d0092;

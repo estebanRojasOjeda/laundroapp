@@ -14,7 +14,7 @@ const Login = () => {
 
     const [inputs, setInputs] = useState({
         email: '',
-        password: ''
+        pass: ''
     });
 
     const updateFormValue = (e) => {
@@ -32,7 +32,8 @@ const Login = () => {
                 if (resp.data.success) {
                     context.setUser(resp.data.user);
                     sessionStorage.setItem('USER_DATA', JSON.stringify(resp.data.user));
-                    history.push('/pirates');
+                    history.push('/main');
+                    
                 }
             }).catch(err => {
                 Swal.fire('Error', err.response.data.message, 'error');
@@ -52,7 +53,7 @@ const Login = () => {
                 <Col xs={12}>
                     <FormGroup>
                         <Label>Contraseña</Label>
-                        <Input type="password" name="password" value={inputs.password} onChange={updateFormValue} required />
+                        <Input type="password" name="pass" value={inputs.pass} onChange={updateFormValue} required />
                     </FormGroup>
                 </Col>
                 <Col xs={12} className="mt-3">

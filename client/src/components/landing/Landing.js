@@ -8,7 +8,7 @@ const Landing = () => {
             <div className="cover-page">
                 <CoverPage></CoverPage>
             </div>
-            <div className="login">
+            <div className="login-frame">
                 <Login></Login>
             </div>
         </div>

@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/">
             <Landing></Landing>
           </Route>
-          <Route path="/pirates">
+          <Route path="/main">
             <MainContainer></MainContainer>
           </Route>
         </Switch>

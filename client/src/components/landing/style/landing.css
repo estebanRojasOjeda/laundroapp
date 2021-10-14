@@ -1,29 +1,69 @@
 .landing{
     background-color: #4a0072; 
-    margin: 10px;
-    min-height: 700px;
-    width: 98%;
+    height: 100vh;
+    width: 100%;
     border: 3px solid #000000;
-    text-align: center;
 }
 
-.cover-page{
-    min-height: 600px;
-    max-width: 500px;
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    left: 0px;
+
+
+
+@media only screen and (max-width: 480px){
+    .cover-page{
+      display: none;
+    }
+
+    .login-frame{
+        text-align: left;
+        background-color: #ffffff !important;
+        height: 60vh;
+        width: 60vw;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 15vw;
+    }
+
 }
 
-.login{
-    text-align: left;
-    background-color: #ffffff !important;
-    min-height: 400px;
-    max-width: 500px;
-    display: inline-block;
-    vertical-align: top;
 
+@media only screen and (min-width: 481px) and (max-width: 1199px){
+    
+    .cover-page{
+       display: none;
+    }
+
+    .login-frame{
+        text-align: left;
+        background-color: #ffffff !important;
+        height: 60vh;
+        width: 60vw;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 15vw;
+    }
 }
 
+
+@media only screen and (min-width: 1200px){
+    .cover-page{
+        height: 95vh;
+        min-width: 30vw;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .login-frame{
+
+        background-color: #ffffff !important;
+        height: 40vh;
+        width: 40vw;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 10px;
+        margin-right: 0 auto;
+        margin-top: 5%;
+        padding: 20px;
+        border-radius: 10px;
+    }
+}
 
