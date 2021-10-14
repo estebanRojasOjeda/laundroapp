@@ -1,3 +1,4 @@
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,12 +17,14 @@ function App() {
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <Switch>
+        <React.StrictMode>
           <Route exact path="/">
             <Landing></Landing>
           </Route>
           <Route path="/main">
             <MainContainer></MainContainer>
           </Route>
+          </React.StrictMode>
         </Switch>
       </Router>
     </UserContext.Provider>

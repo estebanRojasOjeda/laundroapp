@@ -40,7 +40,8 @@ const Login = () => {
             });
     }
 
-    return (<div className="login">
+    return (
+    <div className="login">
         <Form onSubmit={login}>
             <h1>Iniciar Sesión</h1>
             <Row>

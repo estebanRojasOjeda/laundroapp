@@ -2,9 +2,7 @@
 
 const UserMantainer = () => {
     return (
-      <div className="content">
           <p>User mmantainer</p>
-      </div>
     );
   }
   
