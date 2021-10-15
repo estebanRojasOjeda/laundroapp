@@ -8,14 +8,14 @@ import {
 import Header from "./Header";
 import MenuNav from "./MenuNav";
 import Profile from "../functionalities/Profile";
-import Washes from "../functionalities/Washes";
+import WashList from "../functionalities/WashList";
 import UserMaintainer from "../functionalities/UserMaintainer";
 import CustomerMantainer from "../functionalities/CustomerMantainer";
 
 const MainContainer = () => {
 
 
-    const { path, url } = useRouteMatch();
+    const { path } = useRouteMatch();
 
     return (
         <Router>
@@ -28,7 +28,7 @@ const MainContainer = () => {
                 <div className="content">
                     <Switch>
                         <Route exact path={`${path}`}>
-                            <Washes></Washes>
+                            <WashList></WashList>
                         </Route>
                         <Route path={`${path}/profile`}>
                             <Profile></Profile>

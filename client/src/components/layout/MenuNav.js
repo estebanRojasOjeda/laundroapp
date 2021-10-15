@@ -1,11 +1,5 @@
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import {
-    BrowserRouter as Router,
-    Switch,
-    useHistory,
-    Link,
-    useRouteMatch
-} from "react-router-dom";
+import { ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { useHistory } from "react-router-dom";
 import "./style/menu.nav.css";
 
 
@@ -31,10 +25,10 @@ const MenuNav = () => {
     return (
         <div className="nav">
             <ListGroup>
-                <ListGroupItem><button onClick={profile}>Perfil</button></ListGroupItem>
-                <ListGroupItem><button onClick={washes}>Lavados</button></ListGroupItem>
-                <ListGroupItem><button onClick={users}>Mantenedor Usuarios</button></ListGroupItem>
-                <ListGroupItem><button onClick={customers}>Mantenedor Clientes</button></ListGroupItem>
+                <ListGroupItem><Button size="sm" block onClick={profile}>Perfil</Button></ListGroupItem>
+                <ListGroupItem><Button size="sm" onClick={washes}>Lavados</Button></ListGroupItem>
+                <ListGroupItem><Button size="sm" onClick={users}>Mantenedor Usuarios</Button></ListGroupItem>
+                <ListGroupItem><Button size="sm" onClick={customers}>Mantenedor Clientes</Button></ListGroupItem>
             </ListGroup>
         </div>
     );

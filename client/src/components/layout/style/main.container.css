@@ -10,7 +10,7 @@
     .content{
         text-align: left;
         background-color: #ffffff !important;
-        height: 60vh;
+        height: 85vh;
         width: 99%;
         padding: 20px;
         border-radius: 10px;
@@ -27,7 +27,7 @@
     .content{
         text-align: left;
         background-color: #ffffff !important;
-        height: 60vh;
+        height: 85vh;
         width: 99%;
         padding: 20px;
         border-radius: 10px;
@@ -45,15 +45,14 @@
     .content{
 
         background-color: #ffffff !important;
-        height: 80vh;
-        width: 70vw;
+        height: 85vh;
+        width: 75vw;
         display: inline-block;
         vertical-align: top;
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-top: 1%;
+        margin-left: 0vw;
+        margin-top: 1vh;
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 5px;
     }
     .menu{
         height: 90vh;

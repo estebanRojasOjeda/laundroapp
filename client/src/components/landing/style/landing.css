@@ -55,14 +55,14 @@
     .login-frame{
 
         background-color: #ffffff !important;
-        height: 40vh;
+        height: 50vh;
         width: 40vw;
         display: inline-block;
-        vertical-align: top;
-        margin-left: 10px;
+        vertical-align: middle;
+        margin-left: 6vw;
         margin-right: 0 auto;
-        margin-top: 5%;
-        padding: 20px;
+        margin-top: 10%;
+        padding: 25px;
         border-radius: 10px;
     }
 }

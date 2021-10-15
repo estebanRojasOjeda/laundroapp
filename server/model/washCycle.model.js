@@ -21,7 +21,7 @@ const WashCycleSchema = mongoose.Schema({
         required: [true, 'El cliente es requerido']
     },
     date: Date,
-    state: Number,
+    state: String,
     totalAmount: Number
 });
 
