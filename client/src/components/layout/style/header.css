@@ -24,15 +24,21 @@
     width: 100% !important;
 }
 
+.user-name{
+    color: #FFF !important;
+}
+
 
 @media only screen and (max-width: 480px){
     .navbar-toggler{
-        overflow: visible !important;
-        visibility: visible !important;
         color: #FFF !important;
         border-color: #fff !important;
         z-index: 13 !important;
         
+    }
+
+    .logo{
+        display: none;
     }
 
 }
@@ -40,19 +46,24 @@
 
 @media only screen and (min-width: 481px) and (max-width: 1023px){
     .navbar-toggler{
-        overflow: visible !important;
-        visibility: visible !important;
         color: #FFF !important;
         border-color: #fff !important;
         z-index: 13 !important;
+    }
+
+    .logo{
+        display: none;
     }
 }
 
 
 @media only screen and (min-width: 1024px){
     .navbar-toggler{
-        overflow: hidden !important;
-        visibility: hidden !important;
+        display: none;
         
+    }
+
+    .logo{
+        display: block;
     }
 }

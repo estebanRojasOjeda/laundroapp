@@ -1,25 +1,22 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
-import UserContext from "../../context/UserContext";
 import { BsFillCheckSquareFill, BsFillTrashFill } from "react-icons/bs";
 
 const WashList = (props) => {
-      const context = useContext(UserContext);
 
       const [wash, setWash] = useState([]);
 
       useEffect(() => {
             axios.get('/api/wash-cycle')
                   .then(res => {
-                        console.log('RESP', res.data);
                         setWash(res.data)
                   }).catch(err => Swal.fire('Error al listar lavados', 'favor comunicar al admin', 'error'));
       }, []);
 
-      const deleteWash = (p) => {
+      const deleteWash = (id) => {
             Swal.fire({
                   title: 'Eliminar ciclo de Lavado',
                   text: 'eliminar?',
@@ -29,9 +26,9 @@ const WashList = (props) => {
                   icon: 'warning'
             }).then(resp => {
                   if (resp.value) {
-                        axios.delete('/api/wash-cycle/' + p.id)
+                        axios.delete('/api/wash-cycle/' + id)
                               .then(res => {
-                                    const wash_ = wash.filter(w => w._id != p.id);
+                                    const wash_ = wash.filter(w => w._id != id);
                                     setWash(wash_);
                                     Swal.fire('Ciclo eliminado', 'El registro fue eliminado', 'success');
                               })
@@ -41,7 +38,32 @@ const WashList = (props) => {
       }
 
 
+      const finishWash = (id) => {
+            Swal.fire({
+                  title: 'Finalizar ciclo de Lavado',
+                  text: 'desea finalizar ciclo?',
+                  confirmButtonText: 'Si',
+                  cancelButtonText: 'No',
+                  showCancelButton: true,
+                  icon: 'warning'
+            }).then(res => {
+                  if (res.value) {
+                        axios.put('/api/wash-cycle/' + id, { state: "FINISHED" })
+                              .then(() => {
+                                    updateTable();
+                              }).catch(err => {
+                                    Swal.fire('Error al finalizar lavado', 'favor comunicar al admin', 'error: ' + err)
+                              });
+                  }
+            })
+      }
 
+      const updateTable = () => {
+            axios.get('/api/wash-cycle')
+                  .then(res => {
+                        setWash(res.data)
+                  }).catch(err => Swal.fire('Error al actualizar tabla', 'Error al tratar de listar', 'error'));
+      }
 
       return (
 
@@ -67,8 +89,8 @@ const WashList = (props) => {
                                     <td>{item.amount}</td>
                                     <td>{item.totalAmount}</td>
                                     <td>{item.state}</td>
-                                    <td><a onClick={e => deleteWash(item)}><BsFillCheckSquareFill /></a></td>
-                                    <td><a onClick={e => deleteWash(item)}><BsFillTrashFill /></a></td>
+                                    <td><a onClick={e => finishWash(item.id)}><BsFillCheckSquareFill /></a></td>
+                                    <td><a onClick={e => deleteWash(item.id)}><BsFillTrashFill /></a></td>
                               </tr>
                         )}
                   </tbody>
