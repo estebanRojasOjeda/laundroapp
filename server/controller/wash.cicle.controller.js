@@ -3,9 +3,13 @@ const jwtConfig = require("../configuration/jwt.config");
 const jwt = require("jsonwebtoken");
 
 module.exports.create = (req, res) => {
-    jwt.verify(req.cookies.usertoken, jwtConfig.secret, (err) => {
+    jwt.verify(req.cookies.usertoken, jwtConfig.secret, (err, decodedToken) => {
         if (!err) {
-            const wash = req.body;
+            const wash = [];
+            wash.push({
+                ...req.body,
+                userId: decodedToken.id
+            })
             washCycle.create(wash)
                 .then(data => res.json(data))
                 .catch(err => res.status(500).json(err))

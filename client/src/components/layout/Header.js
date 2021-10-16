@@ -33,9 +33,6 @@ const Header = () => {
             <Navbar color="faded" light>
                 <NavbarToggler onClick={toggleNavbar} className="mr-2" />
                 <NavbarBrand href="/" className="mr-auto logo">LaundroApp</NavbarBrand>
-                
-                
-                
                 <Collapse isOpen={!collapsed} navbar>
                     <div className="asdf">
                         <Nav navbar>

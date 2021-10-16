@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
+import { useHistory } from "react-router-dom";
 import { BsFillCheckSquareFill, BsFillTrashFill } from "react-icons/bs";
+import './style/wash-list.css'
 
-const WashList = (props) => {
+const WashList = () => {
 
       const [wash, setWash] = useState([]);
+
+      const history = useHistory();
 
       useEffect(() => {
             axios.get('/api/wash-cycle')
@@ -37,7 +41,6 @@ const WashList = (props) => {
             })
       }
 
-
       const finishWash = (id) => {
             Swal.fire({
                   title: 'Finalizar ciclo de Lavado',
@@ -65,37 +68,43 @@ const WashList = (props) => {
                   }).catch(err => Swal.fire('Error al actualizar tabla', 'Error al tratar de listar', 'error'));
       }
 
+      const newWash = () => {
+            history.push('/main/new');
+      }
+
       return (
-
-            <Table hover responsive style={{ textAlign: 'center' }}>
-                  <thead>
-                        <tr>
-                              <th>N° Cargas</th>
-                              <th>Fecha</th>
-                              <th>Cliente</th>
-                              <th>Precio unitario</th>
-                              <th>Precio total</th>
-                              <th>Estado</th>
-                              <th>Finalizar</th>
-                              <th>Eliminar</th>
-                        </tr>
-                  </thead>
-                  <tbody>
-                        {wash.map((item, i) =>
-                              <tr key={i}>
-                                    <td>{item.charge}</td>
-                                    <td>{moment(item.date).format('DD-MM-YYYY')}</td>
-                                    <td>{item.customer[0]?.firstName} {item.customer.lastName}</td>
-                                    <td>{item.amount}</td>
-                                    <td>{item.totalAmount}</td>
-                                    <td>{item.state}</td>
-                                    <td><a onClick={e => finishWash(item.id)}><BsFillCheckSquareFill /></a></td>
-                                    <td><a onClick={e => deleteWash(item.id)}><BsFillTrashFill /></a></td>
+            <>
+                  <Table hover responsive style={{ textAlign: 'center' }}>
+                        <thead>
+                              <tr>
+                                    <th>N° Cargas</th>
+                                    <th>Fecha</th>
+                                    <th>Cliente</th>
+                                    <th>Precio unitario</th>
+                                    <th>Precio total</th>
+                                    <th>Estado</th>
+                                    <th>Finalizar</th>
+                                    <th>Eliminar</th>
                               </tr>
-                        )}
-                  </tbody>
-            </Table>
-
+                        </thead>
+                        <tbody>
+                              {wash.map((item, i) =>
+                                    <tr key={i}>
+                                          <td>{item.charge}</td>
+                                          <td>{moment(item.date).format('DD-MM-YYYY')}</td>
+                                          <td>{item.customer[0]?.firstName} {item.customer[0]?.lastName}</td>
+                                          <td>{item.amount}</td>
+                                          <td>{item.totalAmount}</td>
+                                          <td>{item.state}</td>
+                                          <td><a onClick={e => finishWash(item.id)}><BsFillCheckSquareFill /></a></td>
+                                          <td><a onClick={e => deleteWash(item.id)}><BsFillTrashFill /></a></td>
+                                    </tr>
+                              )}
+                        </tbody>
+                  </Table>
+                  <br />
+                  <Button size="lg" className="add-wash" onClick={newWash}>Agregar lavado</Button>
+            </>
       )
 }
 
