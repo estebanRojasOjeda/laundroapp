@@ -3,7 +3,7 @@ import { Table, Button } from "reactstrap";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useHistory } from "react-router-dom";
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillTrashFill, BsPencil } from "react-icons/bs";
 
 const CustomerList = () => {
 
@@ -43,11 +43,14 @@ const CustomerList = () => {
       const newCustomer = () => {
             history.push('/customer/new');
       }
+      const updateCustomer = (id) => {
+            history.push('/customer/edit/' + id);
+      }
 
       return (
             <>
-            <h3>Mantenedor de Clientes</h3>
-            <br/>
+                  <h3>Mantenedor de Clientes</h3>
+                  <br />
                   <Table hover responsive style={{ textAlign: 'center' }}>
                         <thead>
                               <tr>
@@ -56,6 +59,8 @@ const CustomerList = () => {
                                     <th>Apellido</th>
                                     <th>Correo</th>
                                     <th>Movil</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
                               </tr>
                         </thead>
                         <tbody>
@@ -66,6 +71,7 @@ const CustomerList = () => {
                                           <td>{item.lastName}</td>
                                           <td>{item.email}</td>
                                           <td>{item.numberPhone}</td>
+                                          <td><a onClick={e => updateCustomer(item._id)}><BsPencil /></a></td>
                                           <td><a onClick={e => deleteCustomer(item._id)}><BsFillTrashFill /></a></td>
                                     </tr>
                               )}

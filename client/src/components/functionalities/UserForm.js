@@ -90,9 +90,17 @@ const UserForm = (props) => {
         history.push('/main/user');
     }
 
+    var title = '';
+    
+    if (props.new) {
+        title = 'Crear nuevo usuario';
+    } else if (props.edit) {
+        title = 'Editar datos de usuario';
+    }
+
     return (
         <div>
-            <h3>Crear nuevo usuario</h3>
+            <h3>{title}</h3>
             <Form onSubmit={save}>
                 <Row>
                     <Col xs={12}>
@@ -142,7 +150,7 @@ const UserForm = (props) => {
                         </FormGroup>
                     </Col>
                     <Col xs={12} className="mt-3">
-                        <Button type="submit" color="primary">Registrar</Button>
+                        <Button type="submit" color="primary">Guardar</Button>
                     </Col>
                     <Col xs={12} className="mt-3">
                         <Button type="button" onClick={back}>Volver</Button>
