@@ -41,29 +41,31 @@ const CustomerList = () => {
 
 
       const newCustomer = () => {
-            //history.push('/main/new');
+            history.push('/customer/new');
       }
 
       return (
             <>
+            <h3>Mantenedor de Clientes</h3>
+            <br/>
                   <Table hover responsive style={{ textAlign: 'center' }}>
                         <thead>
                               <tr>
-                                    <th>Id</th>
+                                    <th>Rut</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Correo</th>
-                                    <th>Rol</th>
+                                    <th>Movil</th>
                               </tr>
                         </thead>
                         <tbody>
                               {customerList.map((item, i) =>
                                     <tr key={i}>
-                                          <td>{item._id}</td>
+                                          <td>{item.identification}-{item.dv}</td>
                                           <td>{item.firstName}</td>
                                           <td>{item.lastName}</td>
                                           <td>{item.email}</td>
-                                          <td>{item.rol}</td>
+                                          <td>{item.numberPhone}</td>
                                           <td><a onClick={e => deleteCustomer(item._id)}><BsFillTrashFill /></a></td>
                                     </tr>
                               )}

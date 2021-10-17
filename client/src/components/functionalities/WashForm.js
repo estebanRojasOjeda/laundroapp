@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import Swal from 'sweetalert2';
-//import "./style/pirate-form.css";
 
 const initialState = {
     charge: 0,
@@ -65,7 +64,7 @@ const WashForm = () => {
 
     return (
         <div>
-            <h1>Crear nuevo ciclo de lavado</h1>
+            <h3>Crear nuevo ciclo de lavado</h3>
             <Form onSubmit={save}>
                 <Row>
                     <Col xs={12}>

@@ -7,10 +7,11 @@ import {
 } from "react-router-dom";
 import Header from "./Header";
 import MenuNav from "./MenuNav";
-import Profile from "../functionalities/Profile";
 import WashList from "../functionalities/WashList";
 import UserList from "../functionalities/UserList";
+import UserForm from "../functionalities/UserForm";
 import CustomerList from "../functionalities/CustomerList";
+import CustomerForm from "../functionalities/CustomerForm";
 import WashForm from "../functionalities/WashForm";
 
 const MainContainer = () => {
@@ -31,17 +32,20 @@ const MainContainer = () => {
                         <Route exact path={`${path}`}>
                             <WashList></WashList>
                         </Route>
-                        <Route path={`${path}/profile`}>
-                            <Profile></Profile>
-                        </Route>
-                        <Route path={`${path}/user-mantainer`}>
+                        <Route path={`${path}/user`}>
                             <UserList></UserList>
                         </Route>
-                        <Route path={`${path}/customer-mantainer`}>
+                        <Route path={`${path}/customer`}>
                             <CustomerList></CustomerList>
                         </Route>
-                        <Route exact path={`${path}/new`}>
+                        <Route path={`${path}/new`}>
                             <WashForm></WashForm>
+                        </Route>
+                        <Route path={`/user/new`}>
+                            <UserForm></UserForm>
+                        </Route>
+                        <Route path={`/customer/new`}>
+                            <CustomerForm></CustomerForm>
                         </Route>
                     </Switch>
                 </div>

@@ -15,17 +15,14 @@ const Header = () => {
 
     const context = useContext(UserContext);
 
-    const profile = () => {
-        history.push('/main/profile')
-    }
     const washes = () => {
         history.push('/main')
     }
     const users = () => {
-        history.push('/main/user-mantainer')
+        history.push('/main/user')
     }
     const customers = () => {
-        history.push('/main/customer-mantainer')
+        history.push('/main/customer')
     }
 
     return (
@@ -36,9 +33,6 @@ const Header = () => {
                 <Collapse isOpen={!collapsed} navbar>
                     <div className="asdf">
                         <Nav navbar>
-                            <NavItem>
-                                <NavLink><Button size="sm" block onClick={profile}>Perfil</Button></NavLink>
-                            </NavItem>
                             <NavItem>
                                 <NavLink><Button size="sm" onClick={washes}>Lavados</Button></NavLink>
                             </NavItem>

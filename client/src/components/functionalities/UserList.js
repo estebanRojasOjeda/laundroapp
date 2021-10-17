@@ -41,11 +41,13 @@ const UserList = () => {
 
 
       const newUser = () => {
-            //history.push('/main/new');
+            history.push('/user/new');
       }
 
       return (
             <>
+            <h3>Mantenedor de Usuarios</h3>
+            <br/>
                   <Table hover responsive style={{ textAlign: 'center' }}>
                         <thead>
                               <tr>

@@ -8,24 +8,21 @@ const MenuNav = () => {
 
     const history = useHistory();
 
-    const profile = () => {
-        history.push('/main/profile')
-    }
+  
     const washes = () => {
         history.push('/main')
     }
     const users = () => {
-        history.push('/main/user-mantainer')
+        history.push('/main/user')
     }
     const customers = () => {
-        history.push('/main/customer-mantainer')
+        history.push('/main/customer')
     }
 
 
     return (
         <div className="nav">
             <ListGroup>
-                <ListGroupItem><Button size="sm" block onClick={profile}>Perfil</Button></ListGroupItem>
                 <ListGroupItem><Button size="sm" onClick={washes}>Lavados</Button></ListGroupItem>
                 <ListGroupItem><Button size="sm" onClick={users}>Mantenedor Usuarios</Button></ListGroupItem>
                 <ListGroupItem><Button size="sm" onClick={customers}>Mantenedor Clientes</Button></ListGroupItem>

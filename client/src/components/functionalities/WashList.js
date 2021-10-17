@@ -74,6 +74,8 @@ const WashList = () => {
 
       return (
             <>
+            <h3>Ciclos de lavado</h3>
+            <br/>
                   <Table hover responsive style={{ textAlign: 'center' }}>
                         <thead>
                               <tr>
