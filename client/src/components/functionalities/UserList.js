@@ -3,7 +3,7 @@ import { Table, Button } from "reactstrap";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useHistory } from "react-router-dom";
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillTrashFill, BsPencil } from "react-icons/bs";
 
 const UserList = () => {
 
@@ -44,6 +44,10 @@ const UserList = () => {
             history.push('/user/new');
       }
 
+      const updateUser = (id) => {
+            history.push('/user/edit/'+id);
+      }
+
       return (
             <>
             <h3>Mantenedor de Usuarios</h3>
@@ -56,6 +60,8 @@ const UserList = () => {
                                     <th>Apellido</th>
                                     <th>Correo</th>
                                     <th>Rol</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
                               </tr>
                         </thead>
                         <tbody>
@@ -66,6 +72,7 @@ const UserList = () => {
                                           <td>{item.lastName}</td>
                                           <td>{item.email}</td>
                                           <td>{item.rol}</td>
+                                          <td><a onClick={e => updateUser(item._id)}><BsPencil /></a></td>
                                           <td><a onClick={e => deleteUser(item._id)}><BsFillTrashFill /></a></td>
                                     </tr>
                               )}

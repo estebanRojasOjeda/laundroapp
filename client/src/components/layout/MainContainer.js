@@ -42,10 +42,16 @@ const MainContainer = () => {
                             <WashForm></WashForm>
                         </Route>
                         <Route path={`/user/new`}>
-                            <UserForm></UserForm>
+                            <UserForm new={true}></UserForm>
+                        </Route>
+                        <Route path={`/user/edit/:id`}>
+                            <UserForm edit={true}></UserForm>
                         </Route>
                         <Route path={`/customer/new`}>
-                            <CustomerForm></CustomerForm>
+                            <CustomerForm new={true}></CustomerForm>
+                        </Route>
+                        <Route path={`/customer/edit/:id`}>
+                            <CustomerForm edit={true}></CustomerForm>
                         </Route>
                     </Switch>
                 </div>
