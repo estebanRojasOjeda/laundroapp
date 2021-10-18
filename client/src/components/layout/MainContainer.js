@@ -13,6 +13,9 @@ import UserForm from "../functionalities/UserForm";
 import CustomerList from "../functionalities/CustomerList";
 import CustomerForm from "../functionalities/CustomerForm";
 import WashForm from "../functionalities/WashForm";
+import Dashboard from "../functionalities/Dashboard";
+import PdfDocument from "../functionalities/PdfDocument";
+
 
 const MainContainer = () => {
 
@@ -31,6 +34,9 @@ const MainContainer = () => {
                     <Switch>
                         <Route exact path={`${path}`}>
                             <WashList></WashList>
+                        </Route>
+                        <Route exact path={`${path}/document`}>
+                            <PdfDocument></PdfDocument>
                         </Route>
                         <Route path={`${path}/user`}>
                             <UserList></UserList>
@@ -52,6 +58,9 @@ const MainContainer = () => {
                         </Route>
                         <Route path={`/customer/edit/:id`}>
                             <CustomerForm edit={true}></CustomerForm>
+                        </Route>
+                        <Route path={`/dashboard`}>
+                            <Dashboard></Dashboard>
                         </Route>
                     </Switch>
                 </div>

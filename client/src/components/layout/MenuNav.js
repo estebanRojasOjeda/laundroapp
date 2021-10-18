@@ -18,6 +18,9 @@ const MenuNav = () => {
     const customers = () => {
         history.push('/main/customer')
     }
+    const dashboard = () => {
+        history.push('/dashboard')
+    }
 
 
     return (
@@ -26,6 +29,7 @@ const MenuNav = () => {
                 <ListGroupItem><Button size="sm" onClick={washes}>Lavados</Button></ListGroupItem>
                 <ListGroupItem><Button size="sm" onClick={users}>Mantenedor Usuarios</Button></ListGroupItem>
                 <ListGroupItem><Button size="sm" onClick={customers}>Mantenedor Clientes</Button></ListGroupItem>
+                <ListGroupItem><Button size="sm" onClick={dashboard}>Dashboard</Button></ListGroupItem>
             </ListGroup>
         </div>
     );

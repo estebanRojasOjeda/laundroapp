@@ -6,6 +6,9 @@ import moment from 'moment';
 import { useHistory } from "react-router-dom";
 import { BsFillCheckSquareFill, BsFillTrashFill } from "react-icons/bs";
 import './style/wash-list.css'
+import ReactPDF from '@react-pdf/renderer';
+import PdfDocument from "./PdfDocument";
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 const WashList = () => {
 
@@ -50,13 +53,13 @@ const WashList = () => {
                   showCancelButton: true,
                   icon: 'warning'
             }).then(res => {
-                  if (res.value) {
-                        axios.put('/api/wash-cycle/' + id, { state: "FINISHED" })
+                  if (res.value) { 
+                        /*axios.put('/api/wash-cycle/' + id, { state: "FINISHED" })
                               .then(() => {
                                     updateTable();
                               }).catch(err => {
                                     Swal.fire('Error al finalizar lavado', 'favor comunicar al admin', 'error: ' + err)
-                              });
+                              });*/
                   }
             })
       }
@@ -74,8 +77,8 @@ const WashList = () => {
 
       return (
             <>
-            <h3>Ciclos de lavado</h3>
-            <br/>
+                  <h3>Ciclos de lavado</h3>
+                  <br />
                   <Table hover responsive style={{ textAlign: 'center' }}>
                         <thead>
                               <tr>
@@ -98,7 +101,13 @@ const WashList = () => {
                                           <td>{item.amount}</td>
                                           <td>{item.totalAmount}</td>
                                           <td>{item.state}</td>
-                                          <td><a onClick={e => finishWash(item.id)}><BsFillCheckSquareFill /></a></td>
+                                          <td>
+
+
+                                                <PDFDownloadLink document={<PdfDocument />} fileName="somename.pdf">
+                                                      <a onClick={e => finishWash(item.id)}><BsFillCheckSquareFill /></a>
+                                                </PDFDownloadLink>
+                                          </td>
                                           <td><a onClick={e => deleteWash(item.id)}><BsFillTrashFill /></a></td>
                                     </tr>
                               )}
