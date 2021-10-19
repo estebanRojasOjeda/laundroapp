@@ -15,51 +15,61 @@ const Dashboard = () => {
                 setWash(res.data)
             }).catch(err => Swal.fire('Error al listar lavados', 'favor comunicar al admin', 'error'));
     }, []);
-/*
+
+
     const dates = [];
 
-    wash.forEach(el =>{
+    wash.forEach(el => {
         let dateFormated = moment(el.date).format('DD-MM-YYYY');
         dates.push(dateFormated);
     });
+    const date = new Set(dates);
+    const dateGroup = [...date];
 
-    const dataArr = new Set(dates);
-
-    let result = [...dataArr];
-*/
-
-let nuevoObjeto = {};
-//Recorremos el arreglo 
-wash.forEach( el => {
-    let dateFormated = moment(el.date).format('DD-MM-YYYY');
-  //Si la ciudad no existe en nuevoObjeto entonces
-  //la creamos e inicializamos el arreglo de profesionales. 
-  if( !nuevoObjeto.hasOwnProperty(dateFormated)){
-    nuevoObjeto[dateFormated] = {
-      ventas: []
-    }
-  }
-  
-  //Agregamos los datos de profesionales. 
-    nuevoObjeto[dateFormated].ventas.push({
-      ventas: el.charge
+    var cycles = [];
+    var charge = [];
+    var amount = [];
+    dateGroup.forEach(el => {
+        var countCycles = 0;
+        var sumCharge = 0;
+        var sumAmount = 0;
+        wash.forEach(data => {
+            let dateFormated = moment(data.date).format('DD-MM-YYYY');
+            if (el == dateFormated) {
+                countCycles++;
+                sumCharge += data.charge;
+                sumAmount += data.totalAmount;
+            }
+        })
+        cycles.push(countCycles);
+        charge.push(sumCharge);
+        amount.push(sumAmount);
     })
-  
-})
 
-console.log(nuevoObjeto)
+
+
 
     const data = {
-        labels: [nuevoObjeto.indexOf()],
+        labels: dateGroup,
         datasets: [
             {
-                label: '# of Green Votes',
-                data: [3, 10, 13, 15, 22, 30],
-                backgroundColor: 'rgb(75, 192, 192)',
+                label: 'N° lavados',
+                data: cycles,
+                backgroundColor: '#00acc1',
+            },
+            {
+                label: 'N° Cargas',
+                data: charge,
+                backgroundColor: '#d81b60',
+            },
+            {
+                label: 'Ganancia',
+                data: amount,
+                backgroundColor: '#fb8c00',
             },
         ],
     };
-    
+
     const options = {
         scales: {
             yAxes: [
