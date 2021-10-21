@@ -5,7 +5,7 @@ import {
     Route,
     useRouteMatch
 } from "react-router-dom";
-import Header from "./Header";
+
 import MenuNav from "./MenuNav";
 import WashList from "../functionalities/WashList";
 import UserList from "../functionalities/UserList";
@@ -15,18 +15,32 @@ import CustomerForm from "../functionalities/CustomerForm";
 import WashForm from "../functionalities/WashForm";
 import Dashboard from "../functionalities/Dashboard";
 import PdfDocument from "../functionalities/PdfDocument";
-
+import { useContext } from "react";
+import UserContext from "../../context/UserContext";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const MainContainer = () => {
 
-
     const { path } = useRouteMatch();
+
+    const context = useContext(UserContext);
+
+    const history = useHistory();
+
+    useEffect(()=>{
+        if(sessionStorage.getItem('USER_DATA')){
+            context.setUser(JSON.parse(sessionStorage.getItem('USER_DATA')));
+        }else{
+            history.push('/');
+        }
+    }, [])
 
     return (
         <Router>
 
             <div className="main-container">
-                <Header></Header>
+                
                 <div className="menu">
                     <MenuNav></MenuNav>
                 </div>

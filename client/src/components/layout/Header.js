@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../context/UserContext";
 import "./style/header.css";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 
 const Header = () => {
@@ -25,11 +26,16 @@ const Header = () => {
         history.push('/main/customer')
     }
 
+    const logOut = () => {
+        sessionStorage.removeItem('USER_DATA');
+        history.push('/')
+    }
+
     return (
         <div className="head">
             <Navbar color="faded" light>
                 <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-                <NavbarBrand href="/" className="mr-auto logo">LaundroApp</NavbarBrand>
+                <NavbarBrand className="mr-auto logo">LaundroApp</NavbarBrand>
                 <Collapse isOpen={!collapsed} navbar>
                     <div className="asdf">
                         <Nav navbar>
@@ -45,7 +51,7 @@ const Header = () => {
                         </Nav>
                     </div>
                 </Collapse>
-                <NavbarText className="user-name">Hola {context.user?.firstName}!</NavbarText>
+                <NavbarText className="user-name">Hola {context.user?.firstName}!  <BsFillArrowRightCircleFill onClick={logOut}>logOut</BsFillArrowRightCircleFill></NavbarText>
             </Navbar>
         </div>
     )

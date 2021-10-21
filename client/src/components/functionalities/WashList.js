@@ -4,11 +4,11 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
 import { useHistory } from "react-router-dom";
-import { BsFillCheckSquareFill, BsFillTrashFill } from "react-icons/bs";
+import { BsFillCheckSquareFill, BsFillTrashFill, BsFillArrowDownSquareFill, BsFillHandThumbsUpFill } from "react-icons/bs";
 import './style/wash-list.css'
-import ReactPDF from '@react-pdf/renderer';
 import PdfDocument from "./PdfDocument";
 import { PDFDownloadLink } from '@react-pdf/renderer';
+
 
 const WashList = () => {
 
@@ -53,13 +53,13 @@ const WashList = () => {
                   showCancelButton: true,
                   icon: 'warning'
             }).then(res => {
-                  if (res.value) { 
-                        /*axios.put('/api/wash-cycle/' + id, { state: "FINISHED" })
+                  if (res.value) {
+                        axios.put('/api/wash-cycle/' + id, { state: "FINISHED" })
                               .then(() => {
                                     updateTable();
                               }).catch(err => {
                                     Swal.fire('Error al finalizar lavado', 'favor comunicar al admin', 'error: ' + err)
-                              });*/
+                              });
                   }
             })
       }
@@ -88,7 +88,8 @@ const WashList = () => {
                                     <th>Precio unitario</th>
                                     <th>Precio total</th>
                                     <th>Estado</th>
-                                    <th>Finalizar</th>
+                                    <th>Finalizar ciclo</th>
+                                    <th>Boleta</th>
                                     <th>Eliminar</th>
                               </tr>
                         </thead>
@@ -100,14 +101,12 @@ const WashList = () => {
                                           <td>{item.customer[0]?.firstName} {item.customer[0]?.lastName}</td>
                                           <td>{item.amount}</td>
                                           <td>{item.totalAmount}</td>
-                                          <td>{item.state}</td>
+                                          <td>{item.state=='IN_PROGRESS'?'En Progreso':'Finalizado'}</td>
                                           <td>
-
-
-                                                <PDFDownloadLink document={<PdfDocument />} fileName="somename.pdf">
-                                                      <a onClick={e => finishWash(item.id)}><BsFillCheckSquareFill /></a>
-                                                </PDFDownloadLink>
+                                                {item.state == 'IN_PROGRESS' && <a onClick={e => finishWash(item.id)}><BsFillCheckSquareFill /></a>}
+                                                {item.state == 'FINISHED' && <BsFillHandThumbsUpFill/>}
                                           </td>
+                                          <td><PDFDownloadLink document={<PdfDocument data={item} />} fileName="boleta-laundromat.pdf"><BsFillArrowDownSquareFill></BsFillArrowDownSquareFill></PDFDownloadLink></td>
                                           <td><a onClick={e => deleteWash(item.id)}><BsFillTrashFill /></a></td>
                                     </tr>
                               )}

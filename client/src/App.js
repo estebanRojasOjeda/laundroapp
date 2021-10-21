@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,6 +8,7 @@ import { useState } from 'react';
 import UserContext from './context/UserContext';
 import Landing from './components/landing/Landing';
 import MainContainer from "./components/layout/MainContainer";
+import Header from "./components/layout/Header";
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
             <Landing></Landing>
           </Route>
           <Route path="/main">
+          <Header></Header>
             <MainContainer></MainContainer>
           </Route>
           </React.StrictMode>

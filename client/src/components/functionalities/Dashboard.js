@@ -90,7 +90,7 @@ const Dashboard = () => {
 
     return (<>
         <div className='header'>
-            <h1 className='title'>Lavados por mes</h1>
+            <h1 className='title'>Dashboard</h1>
             <div className='links'>
 
             </div>

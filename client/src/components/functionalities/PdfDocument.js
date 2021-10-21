@@ -1,28 +1,19 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { Page, View, Document, Text } from '@react-pdf/renderer';
+import moment from 'moment';
 
-// Create styles
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: 'row',
-    backgroundColor: '#E4E4E4'
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1
-  }
-});
 
-// Create Document Component
-const PdfDocument = () => (
+const PdfDocument = ({ data }) => (
   <Document>
-    <Page size="A4" style={styles.page}>
-      <View style={styles.section}>
-        <Text>Section #1</Text>
-      </View>
-      <View style={styles.section}>
-        <Text>Section #2</Text>
+    <Page size="A4">
+      <View>
+        <Text>Boleta</Text>
+        <Text>Fecha: {moment(data.date).format('DD-MM-YYYY')}</Text>
+        <Text>Rut cliente: {data.customer[0]?.identification}-{data.customer[0]?.dv}</Text>
+        <Text>Nombre cliente: {data.customer[0]?.firstName} {data.customer[0]?.lastName}</Text>
+        <Text>Numero de cargas: {data.charge}</Text>
+        <Text>Monto por carga: {data.amount}</Text>
+        <Text>Monto total: {data.totalAmount}</Text>
       </View>
     </Page>
   </Document>
